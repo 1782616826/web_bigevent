@@ -32,7 +32,7 @@ function getUserInfo() {
         },
         //无论成功失败都回调complete
         complete: function (res) {
-            console.log('执行了 compltte');
+            // console.log('执行了 compltte');
             console.log(res);
             //在copmlete 可以使用responseJSON  拿到相应回来的数据
             if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！') {
@@ -40,7 +40,7 @@ function getUserInfo() {
                 localStorage.removeItem('token');
                 //强制返回登录页面
                 location.href = "login.html"
-        }
+        }}
     })
 }
 //渲染用户头像
