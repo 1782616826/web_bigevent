@@ -45,10 +45,8 @@ $('#btnUpload').on('click',function(){
   // 调用接口长传服务器
   $.ajax({
     mothod:'POST',
-    url:'http://api-breakingnews-web.itheima.net/my/update/avatar',
-    headers: {
-      Authorization: localStorage.getItem('token') || '',
-  },
+    url:'/my/update/avatar',
+    
   data:{
     avater:dataURL},
   success:function(res){

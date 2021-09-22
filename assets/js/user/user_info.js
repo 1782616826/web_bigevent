@@ -18,10 +18,8 @@ $(function() {
       
       $.ajax({
         method: 'GET',
-        url: 'http://api-breakingnews-web.itheima.net/my/userinfo',
-        headers: {
-            Authorization: localStorage.getItem('token') || '',
-        },
+        url: '/my/userinfo',
+        
         success: function(res) {
           if (res.status !== 0) {
             return layer.msg('获取用户信息失败！')
@@ -32,16 +30,7 @@ $(function() {
           
           form.val('formUserInfo', res.data)
         },
-        complete: function (res) {
-            console.log('执行了 compltte');
-            console.log(res);
-            //在copmlete 可以使用responseJSON  拿到相应回来的数据
-            if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！') {
-                //清空token
-                localStorage.removeItem('token');
-                //强制返回登录页面
-                location.href = "login.html"
-        }}
+       
       })
     }
   
@@ -59,10 +48,8 @@ $(function() {
       // 发起 ajax 数据请求
       $.ajax({
         method: 'POST',
-        url: 'http://api-breakingnews-web.itheima.net/my/userinfo',
-        headers: {
-            Authorization: localStorage.getItem('token') || '',
-        },
+        url: '/my/userinfo',
+      
         data: $(this).serialize(),
         success: function(res) {
           if (res.status !== 0) {
@@ -71,17 +58,8 @@ $(function() {
           layer.msg('更新用户信息成功！')
           // 调用父页面中的方法，重新渲染用户的头像和用户的信息
           window.parent.getUserInfo()
-        },
-        complete: function (res) {
-            console.log('执行了 compltte');
-            console.log(res);
-            //在copmlete 可以使用responseJSON  拿到相应回来的数据
-            if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！') {
-                //清空token
-                localStorage.removeItem('token');
-                //强制返回登录页面
-                location.href = "login.html"
-        }}
+        }
+       
       })
     })
   })

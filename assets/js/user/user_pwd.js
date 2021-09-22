@@ -20,11 +20,8 @@ $(function() {
         e.preventDefault()
         $.ajax({
             mothod:'post',
-            url:'http://api-breakingnews-web.itheima.net/my/updatepwd',
+            url:'t/my/updatepwd',
             data:$(this).serialize(),
-            headers: {
-                Authorization: localStorage.getItem('token') || '',
-            },
             success:function(res){
                 if(res.status !== 0){
                     return layer.msg('更新密码失败')
